@@ -12,7 +12,7 @@ Please do not download or use any image that violates its copyright terms.
 
 ### Usage <br />
 ```python
-import import downloader
+from bing_image_downloader import downloader
 downloader.download(query_string, limit=100, adult_filter_off=True, force_replace=False)
 ```
 
