@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: bing-image-downloader
+Version: 1.0.0
+Summary: Python library to download bulk images from Bing.com
+Home-page: https://github.com/gurugaurav/bing_image_downloader
+Author: Guru Prasad Singh
+Author-email: g.gaurav541@gmail.com
+License: UNKNOWN
+Description: Bing Image Downloader
+        ######################
+        
+        Python liberary to download bulk of images form Bing.com
+        
+        
+        Disclaimer
+        ==========
+        
+        This program lets you download tons of images from Bing.
+        Please do not download or use any image that violates its copyright terms.
+        
+        
+Keywords: bing,images,scraping,image-download
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
