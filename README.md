@@ -10,6 +10,12 @@ Python liberary to download bulk of images form Bing.com<br />
 This program lets you download tons of images from Bing.
 Please do not download or use any image that violates its copyright terms.
 
+### Installation <br />
+```sh
+pip install bing-image-downloader
+```
+
+
 ### Usage <br />
 ```python
 from bing_image_downloader import downloader
