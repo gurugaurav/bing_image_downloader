@@ -1,6 +1,6 @@
 
 ## Bing Image Downloader
-######################
+<hr>
 
 Python liberary to download bulk of images form Bing.com.It uses async url, so it is very fast.<br/>
 
