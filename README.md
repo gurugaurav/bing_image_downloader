@@ -27,11 +27,12 @@ pip install .
 ### Usage <br />
 ```python
 from bing_image_downloader import downloader
-downloader.download(query_string, limit=100, adult_filter_off=True, force_replace=False)
+downloader.download(query_string, limit=100,  output_dir='dataset', adult_filter_off=True, force_replace=False)
 ```
 
 `query_string` : String to be searched.<br />
 `limit` : Number of images to download.<br />
+`output_dir` : Name of output dir.<br />
 `adult_filter_off` : Enable of disable adult filteration.<br />
 `force_replace` : Delete folder if present and start a fresh download.<br />
 
