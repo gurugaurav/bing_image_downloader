@@ -28,7 +28,7 @@ class Bing():
         with open(file_path, 'wb') as f:
             f.write(image)
 
-    def download_image(self, link, query):
+    def download_image(self, link, query, output_dir):
         self.download_count += 1
 
         # Get the image link
@@ -42,14 +42,14 @@ class Bing():
             # Download the image
             print("[%] Downloading Image #{} from {}".format(self.download_count, link))
 
-            self.save_image(link, "{}/dataset/bing/{}/".format(os.getcwd(), query) + "Image_{}.{}".format(
+            self.save_image(link, "{}/{}/{}/".format(os.getcwd(), output_dir, query) + "Image_{}.{}".format(
                 str(self.download_count), file_type))
             print("[%] File Downloaded !\n")
         except Exception as e:
             self.download_count -= 1
             print("[!] Issue getting: {}\n[!] Error:: {}".format(link, e))
 
-    def bing(self, query, limit, adlt='off', filters=''):
+    def bing(self, query, limit, output_dir, adlt='off', filters=''):
 
         limit = int(limit)
         page_counter = 0
@@ -69,7 +69,7 @@ class Bing():
 
             for link in links:
                 if self.download_count < limit:
-                    self.download_image(link, query)
+                    self.download_image(link, query, output_dir)
                 else:
                     print("\n\n[%] Done. Downloaded {} images.".format(self.download_count))
                     print("\n===============================================\n")
