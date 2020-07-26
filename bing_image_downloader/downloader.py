@@ -7,7 +7,7 @@ except ImportError:  # Python 3
     from .bing import Bing
 
 
-def download(query, limit=100, output_dir='dataset', adult_filter_off=True, force_replace=False):
+def download(query, limit=100, output_dir='dataset', adult_filter_off=True, force_replace=False, timeout=60):
 
     # engine = 'bing'
     if adult_filter_off:
@@ -31,4 +31,9 @@ def download(query, limit=100, output_dir='dataset', adult_filter_off=True, forc
     if not os.path.isdir("{}/{}/{}".format(cwd, output_dir, query)):
         os.makedirs("{}/{}/{}".format(cwd, output_dir, query))
 
-    Bing().bing(query, limit, output_dir, adult)
+    bing = Bing(query, limit, output_dir, adult, timeout)
+    bing.run()
+
+
+if __name__ == '__main__':
+    download('abitabh', limit=10, timeout='1')
