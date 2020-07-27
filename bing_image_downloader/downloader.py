@@ -36,4 +36,4 @@ def download(query, limit=100, output_dir='dataset', adult_filter_off=True, forc
 
 
 if __name__ == '__main__':
-    download('abitabh', limit=10, timeout='1')
+    download('cat', limit=10, timeout='1')
