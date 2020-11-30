@@ -2,7 +2,8 @@
 ## Bing Image Downloader
 <hr>
 
-Python library to download bulk of images form Bing.com.It uses async url, so it is very fast.<br/>
+Python library to download bulk of images form Bing.com.
+This package uses async url, which makes it very fast while downloading.<br/>
 
 
 ### Disclaimer<br />
