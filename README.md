@@ -48,7 +48,7 @@ https://pypi.org/project/bing-image-downloader/
 
 ### Donate
 Please support me if this project was helpful to you.</br>
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](paypal.me/GuruPrasadGaurav)
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://paypal.me/GuruPrasadGaurav?locale.x=en_GB)
   
 
 
