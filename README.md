@@ -44,6 +44,11 @@ downloader.download(query_string, limit=100,  output_dir='dataset', adult_filter
 
 ### PyPi <br />
 https://pypi.org/project/bing-image-downloader/
+
+
+### Donate
+Please support me if this project was helpful to you.</br>
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](paypal.me/GuruPrasadGaurav)
   
 
 
