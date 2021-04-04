@@ -14,12 +14,13 @@ Author: Guru Prasad (g.gaurav541@gmail.com)
 
 
 class Bing:
-    def __init__(self, query, limit, output_dir, adult, timeout, filters=''):
+    def __init__(self, query, limit, output_dir, adult, timeout, filters='', print_out):
         self.download_count = 0
         self.query = query
         self.output_dir = output_dir
         self.adult = adult
         self.filters = filters
+        self.print_out = print_out
 
         assert type(limit) == int, "limit must be integer"
         self.limit = limit
@@ -48,20 +49,24 @@ class Bing:
             file_type = filename.split(".")[-1]
             if file_type.lower() not in ["jpe", "jpeg", "jfif", "exif", "tiff", "gif", "bmp", "png", "webp", "jpg"]:
                 file_type = "jpg"
-
-            # Download the image
-            print("[%] Downloading Image #{} from {}".format(self.download_count, link))
-
+                
+            if self.print_out:
+                # Download the image
+                print("[%] Downloading Image #{} from {}".format(self.download_count, link))
+                
             self.save_image(link, "{}/{}/{}/".format(os.getcwd(), self.output_dir, self.query) + "Image_{}.{}".format(
                 str(self.download_count), file_type))
-            print("[%] File Downloaded !\n")
+            if self.print_out:
+                print("[%] File Downloaded !\n")
+
         except Exception as e:
             self.download_count -= 1
             print("[!] Issue getting: {}\n[!] Error:: {}".format(link, e))
 
     def run(self):
         while self.download_count < self.limit:
-            print('\n\n[!!]Indexing page: {}\n'.format(self.page_counter + 1))
+            if self.print_out:
+                print('\n\n[!!]Indexing page: {}\n'.format(self.page_counter + 1))
             # Parse the page source and download pics
             request_url = 'https://www.bing.com/images/async?q=' + urllib.parse.quote_plus(self.query) \
                           + '&first=' + str(self.page_counter) + '&count=' + str(self.limit) \
@@ -70,9 +75,9 @@ class Bing:
             response = urllib.request.urlopen(request)
             html = response.read().decode('utf8')
             links = re.findall('murl&quot;:&quot;(.*?)&quot;', html)
-
-            print("[%] Indexed {} Images on Page {}.".format(len(links), self.page_counter + 1))
-            print("\n===============================================\n")
+            if self.print_out:
+                print("[%] Indexed {} Images on Page {}.".format(len(links), self.page_counter + 1))
+                print("\n===============================================\n")
 
             for link in links:
                 if self.download_count < self.limit:
