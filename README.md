@@ -28,7 +28,7 @@ pip install .
 ### Usage <br />
 ```python
 from bing_image_downloader import downloader
-downloader.download(query_string, limit=100,  output_dir='dataset', adult_filter_off=True, force_replace=False, timeout=60)
+downloader.download(query_string, limit=100,  output_dir='dataset', adult_filter_off=True, force_replace=False, timeout=60, print_out=True)
 ```
 
 `query_string` : String to be searched.<br />
@@ -37,6 +37,7 @@ downloader.download(query_string, limit=100,  output_dir='dataset', adult_filter
 `adult_filter_off` : (optional, default is True) Enable of disable adult filteration.<br />
 `force_replace` : (optional, default is False) Delete folder if present and start a fresh download.<br />
 `timeout` : (optional, default is 60) timeout for connection in seconds.<br />
+`print_out` : (optional, default is True) disable downloaded message.<br />
 
 
 
