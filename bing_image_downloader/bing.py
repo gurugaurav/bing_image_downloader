@@ -94,9 +94,10 @@ class Bing:
             for link in links:
                 if self.download_count < self.limit:
                     self.download_image(link)
-                else:
-                    print("\n\n[%] Done. Downloaded {} images.".format(self.download_count))
-                    print("\n===============================================\n")
-                    break
 
             self.page_counter += 1
+        print("\n\n[%] Done. Downloaded {} images.".format(self.download_count))
+        print("===============================================\n")
+        print("Please show your support here")
+        print("https://www.buymeacoffee.com/gurugaurav")
+        print("\n===============================================\n")
