@@ -1,6 +1,4 @@
 from pathlib import Path
-import os
-import sys
 import urllib.request
 import urllib
 import imghdr
