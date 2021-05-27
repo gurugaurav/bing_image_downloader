@@ -1,5 +1,6 @@
-import os
+import os, sys
 import shutil
+from pathlib import Path
 
 try:
     from bing import Bing
@@ -7,7 +8,8 @@ except ImportError:  # Python 3
     from .bing import Bing
 
 
-def download(query, limit=100, output_dir='dataset', adult_filter_off=True, force_replace=False, timeout=60, print_out=True):
+def download(query, limit=100, output_dir='dataset', adult_filter_off=True, 
+force_replace=False, timeout=60, verbose=True):
 
     # engine = 'bing'
     if adult_filter_off:
@@ -15,25 +17,29 @@ def download(query, limit=100, output_dir='dataset', adult_filter_off=True, forc
     else:
         adult = 'on'
 
-    cwd = os.getcwd()
-    image_dir = os.path.join(cwd, output_dir, query)
+    
+    # cwd = Path.cwd()
+    # output_dir = Path(output_dir)
+    # image_dir = Path.joinpath(cwd, output_dir, query)
+    image_dir = Path(output_dir).joinpath(query).absolute()
 
     if force_replace:
-        if os.path.isdir(image_dir):
+        if Path.isdir(image_dir):
             shutil.rmtree(image_dir)
 
     # check directory and create if necessary
     try:
-        if not os.path.isdir("{}/{}/".format(cwd, output_dir)):
-            os.makedirs("{}/{}/".format(cwd, output_dir))
-    except:
-        pass
-    if not os.path.isdir("{}/{}/{}".format(cwd, output_dir, query)):
-        os.makedirs("{}/{}/{}".format(cwd, output_dir, query))
+        if not Path.is_dir(image_dir):
+            Path.mkdir(image_dir, parents=True)
 
-    bing = Bing(query, limit, output_dir, adult, timeout, print_out)
+    except Exception as e:
+        print('[Error]Failed to create directory.', e)
+        sys.exit(1)
+        
+    print("[%] Downloading Images to {}".format(str(image_dir.absolute())))
+    bing = Bing(query, limit, image_dir, adult, timeout, verbose)
     bing.run()
 
 
 if __name__ == '__main__':
-    download('cat', limit=10, timeout='1')
+    download('dog', output_dir="..\\Users\\cat", limit=10, timeout=1)
