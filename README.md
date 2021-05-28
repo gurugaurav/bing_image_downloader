@@ -28,7 +28,7 @@ pip install .
 ### Usage <br />
 ```python
 from bing_image_downloader import downloader
-downloader.download(query_string, limit=100,  output_dir='dataset', adult_filter_off=True, force_replace=False, timeout=60, print_out=True)
+downloader.download(query_string, limit=100,  output_dir='dataset', adult_filter_off=True, force_replace=False, timeout=60, verbose=Flase)
 ```
 
 `query_string` : String to be searched.<br />
@@ -37,7 +37,7 @@ downloader.download(query_string, limit=100,  output_dir='dataset', adult_filter
 `adult_filter_off` : (optional, default is True) Enable of disable adult filteration.<br />
 `force_replace` : (optional, default is False) Delete folder if present and start a fresh download.<br />
 `timeout` : (optional, default is 60) timeout for connection in seconds.<br />
-`print_out` : (optional, default is True) disable downloaded message.<br />
+`verbose` : (optional, default is False) disable downloaded message.<br />
 
 
 
@@ -47,9 +47,14 @@ downloader.download(query_string, limit=100,  output_dir='dataset', adult_filter
 https://pypi.org/project/bing-image-downloader/
 
 
+
+
+</br>
+
 ### Donate
 Please support me if this project was helpful to you.</br>
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://paypal.me/GuruPrasadGaurav?locale.x=en_GB)
+
+[<img src="https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-1.svg" alt="Show your support" width="180"/>](https://www.buymeacoffee.com/gurugaurav)
   
 
 
