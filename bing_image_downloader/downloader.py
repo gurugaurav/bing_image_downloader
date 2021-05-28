@@ -18,9 +18,6 @@ force_replace=False, timeout=60, verbose=True):
         adult = 'on'
 
     
-    # cwd = Path.cwd()
-    # output_dir = Path(output_dir)
-    # image_dir = Path.joinpath(cwd, output_dir, query)
     image_dir = Path(output_dir).joinpath(query).absolute()
 
     if force_replace:
