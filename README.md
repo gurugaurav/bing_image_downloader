@@ -54,7 +54,7 @@ https://pypi.org/project/bing-image-downloader/
 </br>
 
 ### Donate
-Please support me if this project was helpful to you.</br>
+You can buy me a coffee if this project was helpful to you.</br>
 
 [<img src="https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-1.svg" alt="Show your support" width="180"/>](https://www.buymeacoffee.com/gurugaurav)
   
