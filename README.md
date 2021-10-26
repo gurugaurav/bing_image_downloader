@@ -43,7 +43,7 @@ downloader.download(query_string, limit=100,  output_dir='dataset', adult_filter
 `verbose` : (optional, default is True) Enable downloaded message.<br />
 
 
-
+You can also test the programm by runnning `test.py keyword`
 
 
 ### PyPi <br />
