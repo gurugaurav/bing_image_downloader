@@ -12,12 +12,12 @@ Author: Guru Prasad (g.gaurav541@gmail.com)
 
 
 class Bing:
-    def __init__(self, query, limit, output_dir, adult, timeout,  filters='', verbose=True):
+    def __init__(self, query, limit, output_dir, adult, timeout,  filter='', verbose=True):
         self.download_count = 0
         self.query = query
         self.output_dir = output_dir
         self.adult = adult
-        self.filters = filters
+        self.filter = filter
         self.verbose = verbose
 
         assert type(limit) == int, "limit must be integer"
@@ -35,6 +35,23 @@ class Bing:
       'Accept-Encoding': 'none',
       'Accept-Language': 'en-US,en;q=0.8',
       'Connection': 'keep-alive'}
+
+
+    def get_filter(self, shorthand):
+        match shorthand:
+            case ("line" | "linedrawing"):
+                return "+filterui:photo-linedrawing"
+            case "photo":
+                return "+filterui:photo-photo"
+            case "clipart":
+                return "+filterui:photo-clipart"
+            case ("gif" | "animatedgif"):
+                return "+filterui:photo-animatedgif"
+            case "transparent":
+                return "+filterui:photo-transparent"
+            case _:
+                return ""
+
 
     def save_image(self, link, file_path):
         request = urllib.request.Request(link, None, self.headers)
@@ -77,7 +94,7 @@ class Bing:
             # Parse the page source and download pics
             request_url = 'https://www.bing.com/images/async?q=' + urllib.parse.quote_plus(self.query) \
                           + '&first=' + str(self.page_counter) + '&count=' + str(self.limit) \
-                          + '&adlt=' + self.adult + '&qft=' + ('' if self.filters is None else str(self.filters))
+                          + '&adlt=' + self.adult + '&qft=' + ('' if self.filter is None else self.get_filter(self.filter))
             request = urllib.request.Request(request_url, None, headers=self.headers)
             response = urllib.request.urlopen(request)
             html = response.read().decode('utf8')
