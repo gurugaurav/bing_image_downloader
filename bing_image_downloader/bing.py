@@ -112,7 +112,3 @@ class Bing:
 
             self.page_counter += 1
         print("\n\n[%] Done. Downloaded {} images.".format(self.download_count))
-        print("===============================================\n")
-        print("Please show your support here")
-        print("https://www.buymeacoffee.com/gurugaurav")
-        print("\n===============================================\n")
