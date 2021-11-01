@@ -38,18 +38,17 @@ class Bing:
 
 
     def get_filter(self, shorthand):
-        match shorthand:
-            case ("line" | "linedrawing"):
+            if shorthand == "line" | shorthand == "linedrawing":
                 return "+filterui:photo-linedrawing"
-            case "photo":
+            elif shorthand == "photo":
                 return "+filterui:photo-photo"
-            case "clipart":
+            elif shorthand == "clipart":
                 return "+filterui:photo-clipart"
-            case ("gif" | "animatedgif"):
+            elif shorthand == "gif" | shorthand == "animatedgif":
                 return "+filterui:photo-animatedgif"
-            case "transparent":
+            elif shorthand == "transparent":
                 return "+filterui:photo-transparent"
-            case _:
+            else:
                 return ""
 
 

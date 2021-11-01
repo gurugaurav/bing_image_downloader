@@ -11,7 +11,7 @@ else:
             
 downloader.download(
     query,
-    limit=1,
+    limit=10,
     output_dir="dataset",
     adult_filter_off=True,
     force_replace=False,
