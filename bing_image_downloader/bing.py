@@ -19,6 +19,7 @@ class Bing:
         self.adult = adult
         self.filters = filters
         self.verbose = verbose
+        self.seen = set()
 
         assert type(limit) == int, "limit must be integer"
         self.limit = limit
@@ -90,7 +91,8 @@ class Bing:
                 print("\n===============================================\n")
 
             for link in links:
-                if self.download_count < self.limit:
+                if self.download_count < self.limit and link not in self.seen:
+                    self.seen.add(link)
                     self.download_image(link)
 
             self.page_counter += 1
