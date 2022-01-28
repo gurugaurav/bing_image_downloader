@@ -39,10 +39,11 @@ downloader.download(query_string, limit=100,  output_dir='dataset', adult_filter
 `adult_filter_off` : (optional, default is True) Enable of disable adult filteration.<br />
 `force_replace` : (optional, default is False) Delete folder if present and start a fresh download.<br />
 `timeout` : (optional, default is 60) timeout for connection in seconds.<br />
+`filter` : (optional, default is "") filter, choose from [line, photo, clipart, gif, transparent]<br />
 `verbose` : (optional, default is True) Enable downloaded message.<br />
 
 
-
+You can also test the programm by runnning `test.py keyword`
 
 
 ### PyPi <br />
