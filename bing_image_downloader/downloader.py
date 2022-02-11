@@ -21,7 +21,7 @@ force_replace=False, timeout=60, filter="", verbose=True):
     image_dir = Path(output_dir).joinpath(query).absolute()
 
     if force_replace:
-        if Path.isdir(image_dir):
+        if Path.is_dir(image_dir):
             shutil.rmtree(image_dir)
 
     # check directory and create if necessary
