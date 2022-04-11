@@ -11,14 +11,14 @@ This package uses async url, which makes it very fast while downloading.<br/>
 ### Disclaimer<br />
 
 This program lets you download tons of images from Bing.
-Please do not download or use any image that violates its copyright terms. 
+Please do not download or use any image that violates its copyright terms.
 
 ### Installation <br />
 ```sh
 pip install bing-image-downloader
 ```
 
-or 
+or
 ```bash
 git clone https://github.com/gurugaurav/bing_image_downloader
 cd bing_image_downloader
@@ -30,7 +30,7 @@ pip install .
 ### Usage <br />
 ```python
 from bing_image_downloader import downloader
-downloader.download(query_string, limit=100,  output_dir='dataset', adult_filter_off=True, force_replace=False, timeout=60, verbose=True)
+downloader.download(query_string, limit=100,  output_dir='dataset', adult_filter_off=True, force_replace=False, timeout=60, verbose=True, error_protection=False)
 ```
 
 `query_string` : String to be searched.<br />
@@ -41,6 +41,7 @@ downloader.download(query_string, limit=100,  output_dir='dataset', adult_filter
 `timeout` : (optional, default is 60) timeout for connection in seconds.<br />
 `filter` : (optional, default is "") filter, choose from [line, photo, clipart, gif, transparent]<br />
 `verbose` : (optional, default is True) Enable downloaded message.<br />
+`error_protection` : (optional, default is False) Enable protections from url errors, like disconnects.<br />
 
 
 You can also test the programm by runnning `test.py keyword`
@@ -58,7 +59,3 @@ https://pypi.org/project/bing-image-downloader/
 You can buy me a coffee if this project was helpful to you.</br>
 
 [<img src="https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-1.svg" alt="Show your support" width="180"/>](https://www.buymeacoffee.com/gurugaurav)
-  
-
-
-
