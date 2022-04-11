@@ -135,7 +135,7 @@ class Bing:
                     break
                 except urllib.error.URLError:
                     if self.verbose:
-                        print("URLError on page, sleeping for " + str(delay))
+                        print("[%] URLError on page, sleeping for " + str(delay))
 
                     # sleeping for 1 second at a time makes it easier to escape out
                     for i in range(delay):
