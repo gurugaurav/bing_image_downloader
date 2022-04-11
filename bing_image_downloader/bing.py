@@ -143,7 +143,7 @@ class Bing:
                     delay *= 2
                     if self.verbose:
                         print('\n\n[!!]Retrying page: {}\n'.format(self.page_counter + 1))
-                    if self.doub_sum(delay) > self.timeout :
+                    if self.doub_sum(delay) > max(self.timeout * 4, 30): # pages are very important, so extend the timeout for those
                         break
             else:
                 response = urllib.request.urlopen(request)
