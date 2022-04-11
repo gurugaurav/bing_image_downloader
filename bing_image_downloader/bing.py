@@ -147,7 +147,7 @@ class Bing:
                         break
             else:
                 response = urllib.request.urlopen(request)
-            if response:
+            if response is not None:
                 html = response.read().decode('utf8')
             if html ==  "":
                 print("[%] No more images are available")
