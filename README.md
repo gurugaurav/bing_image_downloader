@@ -44,7 +44,7 @@ downloader.download(query_string, limit=100,  output_dir='dataset', adult_filter
 `error_protection` : (optional, default is False) Enable protections from url errors, like disconnects.<br />
 
 
-You can also test the programm by runnning `test.py keyword`
+You can also test the program by runnning `test.py keyword`
 
 
 ### PyPi <br />
