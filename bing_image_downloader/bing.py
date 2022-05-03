@@ -4,6 +4,8 @@ import urllib
 import imghdr
 import posixpath
 import re
+from resize.resize  import resize
+from resize.resize import image_to_byte_array
 
 '''
 Python api to download image form Bing.
@@ -12,7 +14,7 @@ Author: Guru Prasad (g.gaurav541@gmail.com)
 
 
 class Bing:
-    def __init__(self, query, limit, output_dir, adult, timeout,  filter='', verbose=True):
+    def __init__(self, query, limit, output_dir, adult, timeout, filter='',resize=None, verbose=True):
         self.download_count = 0
         self.query = query
         self.output_dir = output_dir
@@ -20,11 +22,14 @@ class Bing:
         self.filter = filter
         self.verbose = verbose
         self.seen = set()
+        
 
         assert type(limit) == int, "limit must be integer"
         self.limit = limit
         assert type(timeout) == int, "timeout must be integer"
         self.timeout = timeout
+        assert type(resize)==tuple, "resize must be a tuple(height,width)"
+        self.resize=resize
 
         # self.headers = {'User-Agent': 'Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0'}
         self.page_counter = 0
@@ -54,16 +59,30 @@ class Bing:
 
 
     def save_image(self, link, file_path):
-        request = urllib.request.Request(link, None, self.headers)
-        image = urllib.request.urlopen(request, timeout=self.timeout).read()
-        if not imghdr.what(None, image):
-            print('[Error]Invalid image, not saving {}\n'.format(link))
-            raise ValueError('Invalid image, not saving {}\n'.format(link))
-        with open(str(file_path), 'wb') as f:
-            f.write(image)
+        if not self.resize:
 
-    
+            request = urllib.request.Request(link, None, self.headers)
+            image = urllib.request.urlopen(request, timeout=self.timeout).read()
+            if not imghdr.what(None, image):
+                print('[Error]Invalid image, not saving {}\n'.format(link))
+                raise ValueError('Invalid image, not saving {}\n'.format(link))
+            with open(str(file_path), 'wb') as f:
+                f.write(image)
+        elif self.resize:
+            request = urllib.request.Request(link, None, self.headers)
+
+            img=resize(request,size=self.resize)
+            image=image_to_byte_array(img)
+            # if not imghdr.what(None, image):
+            #     print('[Error]Invalid image, not saving {}\n'.format(link))
+            #     raise ValueError('Invalid image, not saving {}\n'.format(link))
+            with open(str(file_path), 'wb') as f:
+                f.write(image)
+
+
+               
     def download_image(self, link):
+
         self.download_count += 1
         # Get the image link
         try:
