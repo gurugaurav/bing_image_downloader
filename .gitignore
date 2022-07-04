@@ -4,3 +4,11 @@ dataset
 dist
 image_search.egg-info
 **/.vscode/*
+
+### macOS ###
+.DS_Store
+.AppleDouble
+.LSOverride
+
+### Jetbrains ###
+.idea/**
