@@ -12,15 +12,19 @@ Author: Guru Prasad (g.gaurav541@gmail.com)
 
 
 class Bing:
-    def __init__(self, query, limit, output_dir, adult, timeout,  filter='', verbose=True):
+    def __init__(self, query, limit, output_dir, adult, timeout,  filter='', verbose=True,badsites=[]):
         self.download_count = 0
         self.query = query
         self.output_dir = output_dir
         self.adult = adult
         self.filter = filter
         self.verbose = verbose
+        self.badsites = badsites
         self.seen = set()
 
+        if self.badsites:
+            print("Download links will not include: {}".format(*self.badsites),sep=', ')
+            
         assert type(limit) == int, "limit must be integer"
         self.limit = limit
         assert type(timeout) == int, "timeout must be integer"
@@ -106,7 +110,21 @@ class Bing:
                 print("[%] Indexed {} Images on Page {}.".format(len(links), self.page_counter + 1))
                 print("\n===============================================\n")
 
-            for link in links:
+
+            for link in links:                
+
+                isbadsite = False
+                
+                for badsite in self.badsites:
+                    isbadsite = badsite in link
+                    if isbadsite:
+                        if self.verbose:
+                            print("[!] Link included in badsites {}".format(badsite,link))
+                        break    
+                
+                if isbadsite:
+                    continue
+                
                 if self.download_count < self.limit and link not in self.seen:
                     self.seen.add(link)
                     self.download_image(link)
