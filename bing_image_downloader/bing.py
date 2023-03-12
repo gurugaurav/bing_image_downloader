@@ -50,7 +50,7 @@ class Bing:
             elif shorthand == "transparent":
                 return "+filterui:photo-transparent"
             else:
-                return ""
+                return shorthand
 
 
     def save_image(self, link, file_path):
