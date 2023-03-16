@@ -8,8 +8,8 @@ except ImportError:  # Python 3
     from .bing import Bing
 
 
-def download(query, limit=100, output_dir='dataset', adult_filter_off=True, 
-force_replace=False, timeout=60, filter="", verbose=True):
+def download(query, limit=100, output_dir='dataset', adult_filter_off=True,
+force_replace=False, timeout=60, filter="", verbose=True, error_protection=False):
 
     # engine = 'bing'
     if adult_filter_off:
@@ -17,7 +17,7 @@ force_replace=False, timeout=60, filter="", verbose=True):
     else:
         adult = 'on'
 
-    
+
     image_dir = Path(output_dir).joinpath(query).absolute()
 
     if force_replace:
@@ -32,9 +32,9 @@ force_replace=False, timeout=60, filter="", verbose=True):
     except Exception as e:
         print('[Error]Failed to create directory.', e)
         sys.exit(1)
-        
+
     print("[%] Downloading Images to {}".format(str(image_dir.absolute())))
-    bing = Bing(query, limit, image_dir, adult, timeout, filter, verbose)
+    bing = Bing(query, limit, image_dir, adult, timeout, filter, verbose, error_protection)
     bing.run()
 
 
