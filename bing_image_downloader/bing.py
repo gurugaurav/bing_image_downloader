@@ -12,7 +12,7 @@ Author: Guru Prasad (g.gaurav541@gmail.com)
 
 
 class Bing:
-    def __init__(self, query, limit, output_dir, adult, timeout,  filter='', verbose=True):
+    def __init__(self, query, limit, output_dir, adult, timeout,  filter='', verbose=True, blacklist=None, file_extension_whitelist=None):
         self.download_count = 0
         self.query = query
         self.output_dir = output_dir
@@ -20,6 +20,9 @@ class Bing:
         self.filter = filter
         self.verbose = verbose
         self.seen = set()
+        self.blacklist = blacklist
+        self.file_extension_whitelist = file_extension_whitelist
+        self.downloaded = []
 
         assert type(limit) == int, "limit must be integer"
         self.limit = limit
@@ -62,38 +65,55 @@ class Bing:
         with open(str(file_path), 'wb') as f:
             f.write(image)
 
+        self.downloaded.append({
+            "query": self.query,
+            "file_path": file_path,
+            "link": link,
+        })
+
     
     def download_image(self, link):
-        self.download_count += 1
         # Get the image link
         try:
             path = urllib.parse.urlsplit(link).path
             filename = posixpath.basename(path).split('?')[0]
-            file_type = filename.split(".")[-1]
-            if file_type.lower() not in ["jpe", "jpeg", "jfif", "exif", "tiff", "gif", "bmp", "png", "webp", "jpg"]:
-                file_type = "jpg"
+            file_extension = filename.split(".")[-1]
+            file_extension = file_extension.lower()
+            if file_extension.lower() not in ["jpe", "jfif", "exif", "tiff", "gif", "bmp", "png", "webp", "jpg"]:
+                file_extension = "jpg"
+
+            if self.file_extension_whitelist is not None and file_extension not in self.file_extension_whitelist:
+                return
                 
             if self.verbose:
                 # Download the image
-                print("[%] Downloading Image #{} from {}".format(self.download_count, link))
+                print("[%] Downloading Image #{} from {}".format(self.download_count + 1, link))
                 
             self.save_image(link, self.output_dir.joinpath("Image_{}.{}".format(
-                str(self.download_count), file_type)))
+                str(self.download_count + 1), file_extension)))
+            self.download_count += 1
+
             if self.verbose:
                 print("[%] File Downloaded !\n")
 
         except Exception as e:
-            self.download_count -= 1
             print("[!] Issue getting: {}\n[!] Error:: {}".format(link, e))
 
-    
+    def is_blacklist(self, link):
+        if self.blacklist is None:
+            return False
+        for blacklist_link in self.blacklist:
+            if blacklist_link in link:
+                return True
+        return False
+
     def run(self):
         while self.download_count < self.limit:
             if self.verbose:
                 print('\n\n[!!]Indexing page: {}\n'.format(self.page_counter + 1))
             # Parse the page source and download pics
             request_url = 'https://www.bing.com/images/async?q=' + urllib.parse.quote_plus(self.query) \
-                          + '&first=' + str(self.page_counter) + '&count=' + str(self.limit) \
+                          + '&first=' + str(self.page_counter) + '&count=' + str(self.limit * 2 + 10) \
                           + '&adlt=' + self.adult + '&qft=' + ('' if self.filter is None else self.get_filter(self.filter))
             request = urllib.request.Request(request_url, None, headers=self.headers)
             response = urllib.request.urlopen(request)
@@ -101,12 +121,13 @@ class Bing:
             if html ==  "":
                 print("[%] No more images are available")
                 break
-            links = re.findall('murl&quot;:&quot;(.*?)&quot;', html)
+            links_all = re.findall('murl&quot;:&quot;(.*?)&quot;', html)
+            links_filter = [l for l in links_all if not self.is_blacklist(l)]
             if self.verbose:
-                print("[%] Indexed {} Images on Page {}.".format(len(links), self.page_counter + 1))
+                print("[%] Indexed {} Images, {} Filtered Images, on Page {}.".format(len(links_all), len(links_filter), self.page_counter + 1))
                 print("\n===============================================\n")
 
-            for link in links:
+            for link in links_filter:
                 if self.download_count < self.limit and link not in self.seen:
                     self.seen.add(link)
                     self.download_image(link)
