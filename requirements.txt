@@ -241,7 +241,7 @@ pycodestyle @ file:///tmp/build/80754af9/pycodestyle_1615748559966/work
 pycosat==0.6.3
 pycparser @ file:///tmp/build/80754af9/pycparser_1594388511720/work
 pycurl==7.44.1
-pydantic==1.9.0
+pydantic==1.10.13
 pydocstyle @ file:///tmp/build/80754af9/pydocstyle_1621600989141/work
 pydot==1.4.2
 pyerfa @ file:///C:/ci/pyerfa_1621560974055/work
