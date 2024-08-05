@@ -358,7 +358,7 @@ typing-extensions @ file:///tmp/build/80754af9/typing_extensions_1631814937681/w
 ujson @ file:///C:/ci/ujson_1611259568517/work
 unicodecsv==0.14.1
 Unidecode @ file:///tmp/build/80754af9/unidecode_1614712377438/work
-urllib3==1.26.7
+urllib3==1.26.19
 virtualenv==20.13.1
 visions==0.7.4
 voluptuous==0.13.1
