@@ -151,7 +151,7 @@ jupyterlab @ file:///tmp/build/80754af9/jupyterlab_1635799997693/work
 jupyterlab-pygments @ file:///tmp/build/80754af9/jupyterlab_pygments_1601490720602/work
 jupyterlab-server @ file:///tmp/build/80754af9/jupyterlab_server_1633419203660/work
 jupyterlab-widgets @ file:///tmp/build/80754af9/jupyterlab_widgets_1609884341231/work
-keras==2.8.0
+keras==2.13.1
 Keras-Preprocessing==1.1.2
 keyring @ file:///C:/ci/keyring_1629321702436/work
 Kivy==2.0.0
