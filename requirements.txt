@@ -253,7 +253,7 @@ PyInputPlus==0.2.12
 PyJWT @ file:///C:/ci/pyjwt_1619682721924/work
 pylint @ file:///C:/ci/pylint_1627536884966/work
 pyls-spyder==0.4.0
-pymongo==4.0.1
+pymongo==4.6.3
 PyNaCl @ file:///C:/ci/pynacl_1607612759007/work
 pyodbc===4.0.0-unsupported
 pyOpenSSL @ file:///tmp/build/80754af9/pyopenssl_1635333100036/work
