@@ -45,7 +45,7 @@ brotlipy==0.7.0
 cached-property @ file:///tmp/build/80754af9/cached-property_1600785575025/work
 cachetools==5.0.0
 cassandra-driver==3.25.0
-certifi==2021.10.8
+certifi==2024.7.4
 cffi @ file:///C:/ci/cffi_1625831756778/work
 chardet @ file:///C:/ci/chardet_1607706937985/work
 charset-normalizer @ file:///tmp/build/80754af9/charset-normalizer_1630003229654/work
