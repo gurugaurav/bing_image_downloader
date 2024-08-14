@@ -39,10 +39,10 @@ downloader.download(query_string, limit=100,  output_dir='dataset', adult_filter
 `adult_filter_off` : (optional, default is True) Enable of disable adult filteration.<br />
 `force_replace` : (optional, default is False) Delete folder if present and start a fresh download.<br />
 `timeout` : (optional, default is 60) timeout for connection in seconds.<br />
-`filter` : (optional, default is "") filter, take a dictionary (e.g., {'type':'photo'}), see options below<br />
+`filter` : (optional, default is "") filter, take a dictionary (e.g., {'type':'photo'}), see options below*<br />
 `verbose` : (optional, default is True) Enable downloaded message.<br />
 
-Filter options:
+*Filter options:<br />
 "size": choose from ["small", "medium", "large", "extra large", or a specific size "480x480"]<br />
 "color": choose from ["color", "grayscale", "red", "orange", "yellow", "green", "teal", "blue", "purple", "pink", "brown", "black", "gray", "white"]<br />
 "type": choose from ["line", "photo", "clipart", "gif", "transparent"]<br />
