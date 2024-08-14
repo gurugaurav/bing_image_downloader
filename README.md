@@ -43,13 +43,13 @@ downloader.download(query_string, limit=100,  output_dir='dataset', adult_filter
 `verbose` : (optional, default is True) Enable downloaded message.<br />
 
 Filter options:
-"size": choose from ["small", "medium", "large", "extra large", or a specific size "480x480"]
-"color": choose from ["color", "grayscale", "red", "orange", "yellow", "green", "teal", "blue", "purple", "pink", "brown", "black", "gray", "white"]
-"type": choose from ["line", "photo", "clipart", "gif", "transparent"]
-"layout": choose from ["square", "wide", "tall"]
-"people": choose from ["faces", "head&shoulders"]
-"date": choose from ["day", "week", "month", "year"]
-"license": choose from ["cc", "public", "share", "modify,share", "commercial share", "commercial modify,share"]
+"size": choose from ["small", "medium", "large", "extra large", or a specific size "480x480"]<br />
+"color": choose from ["color", "grayscale", "red", "orange", "yellow", "green", "teal", "blue", "purple", "pink", "brown", "black", "gray", "white"]<br />
+"type": choose from ["line", "photo", "clipart", "gif", "transparent"]<br />
+"layout": choose from ["square", "wide", "tall"]<br />
+"people": choose from ["faces", "head&shoulders"]<br />
+"date": choose from ["day", "week", "month", "year"]<br />
+"license": choose from ["cc", "public", "share", "modify,share", "commercial share", "commercial modify,share"]<br />
 
 You can also test the programm by runnning `test.py keyword`
 
