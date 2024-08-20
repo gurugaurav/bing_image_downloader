@@ -196,7 +196,7 @@ nbconvert @ file:///C:/ci/nbconvert_1624479160025/work
 nbformat @ file:///tmp/build/80754af9/nbformat_1617383369282/work
 nest-asyncio @ file:///tmp/build/80754af9/nest-asyncio_1613680548246/work
 networkx @ file:///tmp/build/80754af9/networkx_1633639043937/work
-nltk==3.6.5
+nltk==3.9
 nose @ file:///tmp/build/80754af9/nose_1606773131901/work
 notebook @ file:///C:/ci/notebook_1635393701545/work
 numba @ file:///C:/ci/numba_1635186062888/work
