@@ -107,7 +107,7 @@ gast==0.5.3
 geomet==0.2.1.post1
 gevent @ file:///C:/ci/gevent_1628273776273/work
 gitdb==4.0.9
-GitPython==3.1.27
+GitPython==3.1.41
 glob2 @ file:///home/linux1/recipes/ci/glob2_1610991677669/work
 google-auth==2.6.6
 google-auth-oauthlib==0.4.6
