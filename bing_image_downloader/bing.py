@@ -138,6 +138,7 @@ class Bing:
                 print("[%] No more images are available")
                 break
             links = re.findall('murl&quot;:&quot;(.*?)&quot;', html)
+            links = [link.replace(" ", "%20") for link in links]
             if self.verbose:
                 print("[%] Indexed {} Images on Page {}.".format(len(links), self.page_counter + 1))
                 print("\n===============================================\n")
